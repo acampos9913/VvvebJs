@@ -19,16 +19,19 @@ https://github.com/givanz/VvvebJs
 
 //scan media folder for all files to display in media modal
 
+define('MEDIA_FOLDER',  'media');
+
 function sanitizePath($path) {
 	//sanitize, remove double dot .. and remove get parameters if any
 	$path = preg_replace('@/+@' , DIRECTORY_SEPARATOR, preg_replace('@\?.*$@' , '', preg_replace('@\.{2,}@' , '', preg_replace('@[^\/\\a-zA-Z0-9\-\._]@', '', $path))));
-	return $path;
+	
+	return realpath($path) ?: '';
 }
 
 if (isset($_POST['mediaPath']) && ($path = sanitizePath(substr($_POST['mediaPath'], 0, 256)))) {
-	define('UPLOAD_PATH', $path);
+	define('UPLOAD_PATH', MEDIA_FOLDER . DIRECTORY_SEPARATOR . $path);
 } else {
-	define('UPLOAD_PATH', 'media');
+	define('UPLOAD_PATH', MEDIA_FOLDER);
 }
 
 $scandir = __DIR__ . DIRECTORY_SEPARATOR. UPLOAD_PATH;
