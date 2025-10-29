@@ -84,13 +84,13 @@ Vvveb.Components.add("components/products", {
 
     init: function (node)
 	{
-		$('.mb-3[data-group]').hide();
+		document.querySelector('.mb-3[data-group]').style.display = "none";;
 		if (node.dataset.type != undefined)
 		{
-			$('.mb-3[data-group="'+ node.dataset.type + '"]').show();
+			document.querySelector('.mb-3[data-group="'+ node.dataset.type + '"]').style.display = "block";;
 		} else
 		{		
-			$('.mb-3[data-group]:first').show();
+			document.querySelector('.mb-3[data-group]:first').style.display = "block";
 		}
 	},
     properties: [{
@@ -116,8 +116,8 @@ Vvveb.Components.add("components/products", {
         },
 		onChange : function(element, value, input) {
 			
-			$('.mb-3[data-group]').hide();
-			$('.mb-3[data-group="'+ input.value + '"]').show();
+			document.querySelector('.mb-3[data-group]').style.display = "none";;
+			document.querySelector('.mb-3[data-group="'+ input.value + '"]').style.display = "block";
 
 			return element;
 		}, 

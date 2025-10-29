@@ -855,7 +855,7 @@ let AutocompleteList = { ...Input, ...{
 		this.element = this.render("textinput", data);
 		
 		let autocomplete = new Autocomplete({input:this.element.querySelector("input"), url:data.url});
-		$('input', this.element).autocompleteList(data);//using default parameters
+		document.querySelector('input', this.element).autocompleteList(data);//using default parameters
 		
 		return this.element;
 	}
@@ -888,7 +888,7 @@ let TagsInput = { ...Input, ...{
 		
 		this.element = this.render("tagsinput", data);
 		
-		$('input', this.element).tagsInput(data);//using default parameters
+		document.querySelector('input', this.element).tagsInput(data);//using default parameters
 		
 		return this.element;
 	}

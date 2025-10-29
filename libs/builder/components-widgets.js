@@ -671,12 +671,12 @@ Vvveb.Components.extend("_base", "widgets/chartjs", {
 		if (document.getElementById("#chartjs-script")) {
 			body.append(generateElements('<script id="chartjs-script" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>')[0]);
 			body.append(generateElements('<script>\
-				$(document).ready(function() {\
-					$(".chartjs").each(function () {\
-						ctx = $("canvas", this).get(0).getContext("2d");\
+				document.querySelector(document).ready(function() {\
+					document.querySelector(".chartjs").forEach(function () {\
+						ctx = document.querySelector("canvas", this).get(0).getContext("2d");\
 						config = JSON.parse(this.dataset.chart);\
 						chartjs = new Chart(ctx, config);\
-					});\
+  });\
 				\});\
 			  </script>')[0]);
 		}
