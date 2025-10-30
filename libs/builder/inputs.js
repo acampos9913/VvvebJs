@@ -235,8 +235,8 @@ let HtmlListSelectInput = { ...Input, ...{
 		let elements = element.querySelector(".elements");
 		
 		elements.innerHTML = `<div class="p-4"><div class="spinner-border spinner-border-sm" role="status">
-		  <span class="visually-hidden">Loading...</span>
-		</div> Loading...</div>`;
+		  <span class="visually-hidden">${i18n('inputs.loadingText')}</span>
+		</div> ${i18n('inputs.loadingText')}</div>`;
 		
 		//cache ajax requests
 		if (input.cache[url] != undefined) {
@@ -253,7 +253,7 @@ let HtmlListSelectInput = { ...Input, ...{
 			})
 			.catch(error => {
 				console.log(error.statusText);
-				displayToast("bg-danger", "Error", "Error loading list");
+				displayToast("bg-danger", i18n('inputs.errorText'), i18n('inputs.errorLoadingList'));
 			});
 		}
 	},
@@ -481,7 +481,7 @@ let ImageInput = { ...Input, ...{
 					processData: false,
 					contentType: false,
 					success: function (data) {
-						console.log("File uploaded at: ", data);
+						console.log(i18n('inputs.fileUploadedText'), data);
 						
 						//if image is succesfully uploaded set image url
 						event.data.element.trigger('propertyChange', [data, this]);
